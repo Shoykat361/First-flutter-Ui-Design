@@ -13,12 +13,24 @@ class ListViewExercise extends StatelessWidget {
 /*      body: ListView(
         children: vAlues.map((item) => ListTile(title: Text(item),)).toList(),
       )*/
-        body: ListView.builder(
+        /*body: ListView.builder(
           padding: const EdgeInsets.all(16.00),
           itemCount: vAlues.length,
           itemBuilder: (context,index) => ListTile(title: Text(vAlues[index]),
           ),
-        ),
+        ),*/
+        body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 0.8,
+          ),
+          padding: const EdgeInsets.all(16.00),
+          itemCount: vAlues.length,
+          itemBuilder: (context,index) => Card(
+            child: Center(child: Text(vAlues[index]),),
+          ),
+          ),
+
     );
   }
 }
