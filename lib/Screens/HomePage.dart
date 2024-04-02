@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -28,7 +30,7 @@ class HomePage extends StatelessWidget {
             imgSection(),
             alterNativeHeaderSelection(),
             //headerSection(),
-            navSection(),
+            navSection(context),
             bodySection()
 
 
@@ -48,29 +50,47 @@ class HomePage extends StatelessWidget {
           );
   }
 
-  Padding navSection() {
-    return Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(children: [
-                  Icon(Icons.call,color: Colors.blue,),
-                  SizedBox(height: 10.0,),
-                  Text('Call'),
-                ],),
-                Column(children: [
-                  Icon(Icons.near_me,color: Colors.blue,),
-                  SizedBox(height: 10.0,),
-                  Text('Near Me'),
-                ],),
-                Column(children: [
-                  Icon(Icons.share,color: Colors.blue,),
-                  SizedBox(height: 10.0,),
-                  Text('Share'),
-                ],),
-              ],),
-          );
+  Widget navSection(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16.00),
+      margin: EdgeInsets.all(16.00),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25.00),topRight: Radius.circular(25.00)),
+        border: Border.all(color: Colors.blue,width: 2),
+        boxShadow: [
+          BoxShadow(color: Colors.grey,
+          offset: Offset(0,10),
+          blurRadius: 10,
+          spreadRadius: 2)
+        ],
+        gradient: LinearGradient(colors: [Colors.blue,Colors.blue.shade200],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        stops: [0.8,0.2]),
+
+
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(children: [
+            Icon(Icons.call,color: Colors.white,),
+            SizedBox(height: 10.0,),
+            Text('Call',style: TextStyle(color: Colors.white),),
+          ],),
+          Column(children: [
+            Icon(Icons.near_me,color: Colors.white,),
+            SizedBox(height: 10.0,),
+            Text('Near Me',style: TextStyle(color: Colors.white),),
+          ],),
+          Column(children: [
+            Icon(Icons.share,color: Colors.white,),
+            SizedBox(height: 10.0,),
+            Text('Share',style: TextStyle(color: Colors.white),),
+          ],),
+        ],),
+    );
   }
 
   Widget alterNativeHeaderSelection(){
